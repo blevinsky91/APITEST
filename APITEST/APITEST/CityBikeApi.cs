@@ -12,7 +12,7 @@ namespace APITEST
 	internal class CityBikeApi
 	{
 
-         static async Task Main()
+         public static async Task GetLocationInfo()
             {
                 try
                 {
@@ -20,11 +20,12 @@ namespace APITEST
                     {
                         string apiUrl = "http://api.citybik.es/v2/networks";
                         HttpResponseMessage response = await client.GetAsync(apiUrl);
+                        //var bikeParse = JObject.Parse(response);
 
-                        if (response.IsSuccessStatusCode)
+                    if (response.IsSuccessStatusCode)
                         {
                             string jsonResponse = await response.Content.ReadAsStringAsync();
-                            Network networksResponse = JsonConvert.DeserializeObject<Network>(jsonResponse);
+                            NetworksResponse networksResponse = JsonConvert.DeserializeObject<NetworksResponse>(jsonResponse);
 
 
                             foreach (Network network in networksResponse.networks)

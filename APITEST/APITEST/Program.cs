@@ -16,7 +16,7 @@ namespace APITEST
         public static void Main(string[] args)
         { 
 
-            CityBikeApi.GetLocation();
+            CityBikeApi.GetLocationInfo();
 
         }
         
