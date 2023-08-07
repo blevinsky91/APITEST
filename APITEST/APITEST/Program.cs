@@ -14,9 +14,10 @@ namespace APITEST
         
 
         public static void Main(string[] args)
-        { 
+        {
 
             CityBikeApi.GetLocationInfo();
+            //BikeInfo.CallBikeAPI();
 
         }
         

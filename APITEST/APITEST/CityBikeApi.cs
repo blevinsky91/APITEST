@@ -19,7 +19,7 @@ namespace APITEST
                     using (HttpClient client = new HttpClient())
                     {
                         string apiUrl = "http://api.citybik.es/v2/networks";
-                        HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
                         //var bikeParse = JObject.Parse(response);
 
                     if (response.IsSuccessStatusCode)
