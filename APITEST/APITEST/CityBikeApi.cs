@@ -11,74 +11,8 @@ namespace APITEST
 {
 	internal class CityBikeApi
 	{
-        public static async Task GetLocation()
-		{
-            /*var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-            IConfigurationRoot configuration = builder.Build();
-
-            string api = configuration.GetSection("networks");
-            */
-
-
-            var client = new HttpClient();
-
-
-           //HttpResponseMessage response = await client.GetAsync("http://api.citybik.es/v2/networks");
-            //response.EnsureSuccessStatusCode();
-            //string responseBody = await response.Content.ReadAsStringAsync();
-
-            //var data = JsonConvert.DeserializeObject<Dictionary<string, List<Network>>>(responseBody);
-
-            string city = "Paris";  // Replace with the city you're interested in
-
-            //var filteredData = data["networks"].Where(network => network.location.city == city);
-
-            //foreach (var network in filteredData)
-            //{
-                //Console.WriteLine($"ID: {network.id}, Name: {network.name}, Href: {network.href}");
-            //}
-
-
-
-
-
-
-            
-
-            Console.WriteLine("Enter the name of the country you are riding in.");
-            var countryName = Console.ReadLine();
-
-            var bikesUrl = $"http://api.citybik.es/v2/networks";
-
-            string responseBody = await bikesUrl.Content.ReadAsStringAsync();
-
-            var bikeResponse = client.GetStringAsync(bikesUrl).Result;
-
-            var bikeParse = JObject.Parse(bikeResponse);
-
-            var data = JsonConvert.DeserializeObject<Dictionary<string, List<Network>>>(responseBody);
-
-            var filteredData = data["networks"].Where(network => network.location.city == city);
-
-            foreach (var item in data)
-            {
-                Console.WriteLine($"You chose {bikeParse}");
-                Console.WriteLine($"Name: {item.name}");
-                Console.WriteLine($"Location: {item.city}, {item.country}");
-            }
-
-
-
-
-
-            
-
-
-        {
-            static async Task Main()
+         static async Task Main()
             {
                 try
                 {
@@ -90,13 +24,13 @@ namespace APITEST
                         if (response.IsSuccessStatusCode)
                         {
                             string jsonResponse = await response.Content.ReadAsStringAsync();
-                            NetworksResponse networksResponse = JsonConvert.DeserializeObject<NetworksResponse>(jsonResponse);
+                            Network networksResponse = JsonConvert.DeserializeObject<Network>(jsonResponse);
 
-                            // Now you can access the data and display it as needed
+
                             foreach (Network network in networksResponse.networks)
                             {
-                                Console.WriteLine($"ID: {network.id}, Name: {network.name}");
-                                // Display other properties as needed
+                                Console.WriteLine($"ID: {network.id}, Name: {network.name}, Company: {network.company}, Location: {network.location}");
+
                             }
                         }
                         else
@@ -112,8 +46,87 @@ namespace APITEST
             }
         }
 
-
     }
-}
-}
+
+
+
+
+
+
+
+
+    //public static async Task GetLocation()
+    //{
+    /*var builder = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+    IConfigurationRoot configuration = builder.Build();
+
+    string api = configuration.GetSection("networks");
+    */
+
+
+    //var client = new HttpClient();
+
+
+    //HttpResponseMessage response = await client.GetAsync("http://api.citybik.es/v2/networks");
+    //response.EnsureSuccessStatusCode();
+    //string responseBody = await response.Content.ReadAsStringAsync();
+
+    //var data = JsonConvert.DeserializeObject<Dictionary<string, List<Network>>>(responseBody);
+
+    //string city = "Paris";  // Replace with the city you're interested in
+
+    //var filteredData = data["networks"].Where(network => network.location.city == city);
+
+    //foreach (var network in filteredData)
+    //{
+    //Console.WriteLine($"ID: {network.id}, Name: {network.name}, Href: {network.href}");
+    //}
+
+
+
+
+
+
+
+
+    //Console.WriteLine("Enter the name of the country you are riding in.");
+    //var countryName = Console.ReadLine();
+
+    //var bikesUrl = $"http://api.citybik.es/v2/networks";
+
+    //string responseBody = await bikesUrl.Content.ReadAsStringAsync();
+
+    //var bikeResponse = client.GetStringAsync(bikesUrl).Result;
+
+    //var bikeParse = JObject.Parse(bikeResponse);
+
+    //var data = JsonConvert.DeserializeObject<Dictionary<string, List<Network>>>(responseBody);
+
+    //var filteredData = data["networks"].Where(network => network.location.city == city);
+
+    //foreach (var item in data)
+    //{
+    //Console.WriteLine($"You chose {bikeParse}");
+    //Console.WriteLine($"Name: {item.name}");
+    //Console.WriteLine($"Location: {item.city}, {item.country}");
+    //}
+
+
+
+
+
+
+
+
+
+
+
+    //}
+
+
+
+
 
