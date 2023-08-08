@@ -13,11 +13,11 @@ namespace APITEST
     {
         
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-
-            CityBikeApi.GetLocationInfo();
-            //BikeInfo.CallBikeAPI();
+            //await CityBikeApi.GetLocationInfo();
+            
+            BikeInfo.CallBikeAPI();
 
         }
         
