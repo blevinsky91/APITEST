@@ -22,23 +22,24 @@ namespace APITEST
 
             Console.WriteLine("Here are the Names and Locations of the CityBikes in the United States! : ");
             Console.WriteLine();
+            
 
             foreach (Network network in networksResponse.networks) //iterating through List of networks
             {
 
-                if (network.location.country == "US") //if the country is Italy
+                if (network.location.country == "US") //if the country is USA
                 {
 
                     if (network.location.country == "US") //Locations in USA
                     {
-                        Console.WriteLine(network.company);
-                        Console.WriteLine();
+                        
+                        
+                        
                         Console.WriteLine(network.name);
-                        Console.WriteLine();
+                        
                         Console.WriteLine(network.location.city);
-                        Console.WriteLine();
-                        Console.WriteLine(network.source);
-                        Console.WriteLine();
+                        
+                        
 
                     }
                     if (network.ebikes == true)
@@ -50,6 +51,7 @@ namespace APITEST
                         Console.WriteLine("Sorry, there are no E-Bikes available at this location");
                     }
 
+                    Console.WriteLine();
                     Console.WriteLine();
 
 
