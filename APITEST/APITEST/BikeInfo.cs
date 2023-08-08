@@ -28,17 +28,32 @@ namespace APITEST
 
                 if (network.location.country == "US") //if the country is Italy
                 {
-                    
-                    Console.WriteLine(network.name);
-                    Console.WriteLine(network.location.city);  //view Italian city where bike location is
+
+                    if (network.location.country == "US") //Locations in USA
+                    {
+                        Console.WriteLine(network.company);
+                        Console.WriteLine();
+                        Console.WriteLine(network.name);
+                        Console.WriteLine();
+                        Console.WriteLine(network.location.city);
+                        Console.WriteLine();
+                        Console.WriteLine(network.source);
+                        Console.WriteLine();
+
+                    }
+                    if (network.ebikes == true)
+                    {
+                        Console.WriteLine("There are E-Bikes available at this location!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, there are no E-Bikes available at this location");
+                    }
+
                     Console.WriteLine();
+
+
                 }
-                //Console.WriteLine($"ID: {network.id}, Name: {network.name}, \n" +
-                //    $" Company: {network.company}, \n" +
-                //    $" City: {network.location.city} \n" +
-                //    $" Country: {network.location.country}");
-
-
             }
         }
     }
