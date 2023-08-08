@@ -3,7 +3,7 @@ namespace APITEST
 {
 	public class NetworksResponse
 	{
-        public Network[] networks { get; set; }
+        public List<Network> networks { get; set; }
     }
 }
 

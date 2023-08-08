@@ -9,45 +9,51 @@ using Newtonsoft.Json;
 
 namespace APITEST
 {
-	internal class CityBikeApi
-	{
+    internal class CityBikeApi
+    {
+        public static async Task<NetworksResponse> GetLocationInfo()
+        {
 
-         public static async Task GetLocationInfo()
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    using (HttpClient client = new HttpClient())
+                    string apiUrl = "http://api.citybik.es/v2/networks";
+                    //HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    //var bikeParse = JObject.Parse(response);
+
+
+                    string jsonResponse = await client.GetStringAsync(apiUrl);
+                    NetworksResponse networksResponse = JsonConvert.DeserializeObject<NetworksResponse>(jsonResponse);
+
+
+                    foreach (Network network in networksResponse.networks)
                     {
-                        string apiUrl = "http://api.citybik.es/v2/networks";
-                    HttpResponseMessage response = await client.GetAsync(apiUrl);
-                        //var bikeParse = JObject.Parse(response);
+                        Console.WriteLine($"ID: {network.id}, Name: {network.name}, Company: {network.company}, Location: {network.location}");
 
-                    if (response.IsSuccessStatusCode)
-                        {
-                            string jsonResponse = await response.Content.ReadAsStringAsync();
-                            NetworksResponse networksResponse = JsonConvert.DeserializeObject<NetworksResponse>(jsonResponse);
-
-
-                            foreach (Network network in networksResponse.networks)
-                            {
-                                Console.WriteLine($"ID: {network.id}, Name: {network.name}, Company: {network.company}, Location: {network.location}");
-
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"API request failed with status code: {response.StatusCode}");
-                        }
                     }
+
+                    return networksResponse;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    Console.WriteLine(ex.Message);
+                    return null;
                 }
-            }
-        }
 
+
+
+            }
+
+
+        }
     }
+
+}
+
+
+    
+
 
 
 
